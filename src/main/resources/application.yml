@@ -1,0 +1,33 @@
+# 盲水印维权 - 桌面应用配置
+# 切换版本: 修改 spring.profiles.active 为 hui 或 pro
+
+spring:
+  application:
+    name: blind-watermark-guard
+  profiles:
+    active: pro
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+    serialization:
+      write-dates-as-timestamps: false
+  main:
+    web-application-type: none
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+      - org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration
+
+blind-watermark:
+  data-dir: ${app.data.dir}/data
+  output-dir: ${app.data.dir}/data/outputs
+  supported-image-formats: jpg,jpeg,png
+  supported-video-formats: mp4
+  default-strength: 50
+  server-url: http://192.168.1.4:9999
+  copyright-start-year: 2026
+
+logging:
+  level:
+    com.blindwatermark: info
+    root: warn

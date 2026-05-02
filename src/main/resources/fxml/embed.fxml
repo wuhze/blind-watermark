@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.blindwatermark.controller.EmbedController"
+      styleClass="page-container" spacing="0">
+
+    <VBox styleClass="page-header">
+        <Label text="嵌入水印" styleClass="page-title"/>
+        <Label text="将文本水印嵌入到载体图片中" styleClass="page-description"/>
+    </VBox>
+
+    <ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED">
+        <VBox spacing="16">
+            <padding><Insets top="20" right="24" bottom="24" left="24"/></padding>
+
+            <TitledPane text="水印内容" collapsible="false" styleClass="card-pane">
+                <VBox styleClass="card-section">
+                    <GridPane hgap="12" vgap="10">
+                        <columnConstraints>
+                            <ColumnConstraints minWidth="72" prefWidth="72"/>
+                            <ColumnConstraints hgrow="ALWAYS"/>
+                        </columnConstraints>
+                        <Label text="水印文本" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="form-label"/>
+                        <TextField fx:id="txtWatermarkText" promptText="输入水印文本内容"
+                                   GridPane.columnIndex="1" GridPane.rowIndex="0" styleClass="input-field"/>
+                    </GridPane>
+                </VBox>
+            </TitledPane>
+
+            <TitledPane text="嵌入参数" collapsible="false" styleClass="card-pane">
+                <VBox styleClass="card-section">
+                    <GridPane hgap="12" vgap="10">
+                        <columnConstraints>
+                            <ColumnConstraints minWidth="72" prefWidth="72"/>
+                            <ColumnConstraints hgrow="ALWAYS"/>
+                        </columnConstraints>
+                        <Label text="嵌入强度" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="form-label"/>
+                        <HBox spacing="14" alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                            <Slider fx:id="sliderStrength" min="1" max="100" value="50"
+                                    HBox.hgrow="ALWAYS" maxWidth="1.7976931348623157E308"/>
+                            <Label fx:id="lblStrengthValue" text="50" styleClass="slider-value"/>
+                        </HBox>
+                        <Label text="加密密码" GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="form-label"/>
+                        <TextField fx:id="txtPassword" promptText="留空表示不加密" styleClass="input-field"
+                                   HBox.hgrow="ALWAYS"
+                                   GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                    </GridPane>
+                </VBox>
+            </TitledPane>
+
+            <TitledPane text="载体文件" collapsible="false" styleClass="card-pane">
+                <VBox styleClass="card-section">
+                    <GridPane hgap="12" vgap="10">
+                        <columnConstraints>
+                            <ColumnConstraints minWidth="72" prefWidth="72"/>
+                            <ColumnConstraints hgrow="ALWAYS"/>
+                        </columnConstraints>
+                        <Label text="文件路径" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="form-label"/>
+                        <HBox spacing="10" alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                            <TextField fx:id="txtSourcePath" promptText="选择载体图片" editable="false"
+                                       HBox.hgrow="ALWAYS" styleClass="input-field"/>
+                            <Button fx:id="btnChooseSource" text="选择图片" onAction="#onChooseSource"
+                                    styleClass="secondary-button"/>
+                        </HBox>
+                        <Label text="输出路径" GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="form-label"/>
+                        <HBox spacing="10" alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                            <TextField fx:id="txtOutputPath" promptText="默认输出到程序目录" editable="false"
+                                       HBox.hgrow="ALWAYS" styleClass="input-field"/>
+                            <Button fx:id="btnChooseOutput" text="选择路径" onAction="#onChooseOutputPath"
+                                    styleClass="secondary-button"/>
+                        </HBox>
+                    </GridPane>
+                    <Label fx:id="lblOutputPath" text="" styleClass="form-hint"/>
+                </VBox>
+            </TitledPane>
+
+            <TitledPane text="图片预览" collapsible="true" expanded="false" styleClass="card-pane">
+                <StackPane styleClass="image-preview-frame" alignment="CENTER"
+                           minHeight="200">
+                    <padding><Insets top="12" right="12" bottom="12" left="12"/></padding>
+                    <ImageView fx:id="previewImageView" fitWidth="500" fitHeight="300"
+                               preserveRatio="true" smooth="true"/>
+                </StackPane>
+            </TitledPane>
+
+            <HBox styleClass="action-bar" spacing="14">
+                <Button fx:id="btnEmbed" text="开始嵌入" onAction="#onEmbed"
+                        styleClass="primary-button" prefWidth="140" prefHeight="40"/>
+                <ProgressBar fx:id="progressBar" prefWidth="300" progress="0" HBox.hgrow="ALWAYS"/>
+                <Label fx:id="lblStatus" text="" styleClass="status-label"/>
+            </HBox>
+
+        </VBox>
+    </ScrollPane>
+</VBox>

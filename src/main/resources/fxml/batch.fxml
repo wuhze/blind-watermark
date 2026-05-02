@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.blindwatermark.controller.BatchController"
+      styleClass="page-container" spacing="0">
+
+    <VBox styleClass="page-header">
+        <Label text="批量嵌入" styleClass="page-title"/>
+        <Label text="对目录中的多张图片进行批量嵌入水印" styleClass="page-description"/>
+    </VBox>
+
+    <ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED">
+        <VBox spacing="16">
+            <padding><Insets top="20" right="24" bottom="24" left="24"/></padding>
+
+            <TitledPane text="处理设置" collapsible="false" styleClass="card-pane">
+                <VBox styleClass="card-section">
+                    <GridPane hgap="12" vgap="10">
+                        <columnConstraints>
+                            <ColumnConstraints minWidth="72" prefWidth="72"/>
+                            <ColumnConstraints hgrow="ALWAYS"/>
+                        </columnConstraints>
+                        <Label text="水印文本" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="form-label"/>
+                        <TextField fx:id="txtWatermarkText" promptText="输入水印文本" styleClass="input-field"
+                                   GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                        <Label text="嵌入强度" GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="form-label"/>
+                        <HBox spacing="10" alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                            <Slider fx:id="sliderStrength" min="1" max="100" value="50"
+                                    HBox.hgrow="ALWAYS" maxWidth="1.7976931348623157E308"/>
+                            <Label fx:id="lblStrengthValue" text="50" styleClass="slider-value"/>
+                        </HBox>
+                        <Label text="加密密码" GridPane.columnIndex="0" GridPane.rowIndex="2" styleClass="form-label"/>
+                        <TextField fx:id="txtPassword" promptText="留空表示不加密" styleClass="input-field"
+                                   HBox.hgrow="ALWAYS" prefWidth="200"
+                                   GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                    </GridPane>
+                </VBox>
+            </TitledPane>
+
+            <TitledPane text="目录选择" collapsible="false" styleClass="card-pane">
+                <VBox styleClass="card-section">
+                    <GridPane hgap="12" vgap="10">
+                        <columnConstraints>
+                            <ColumnConstraints minWidth="72" prefWidth="72"/>
+                            <ColumnConstraints hgrow="ALWAYS"/>
+                        </columnConstraints>
+                        <Label text="源目录" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="form-label"/>
+                        <HBox spacing="10" alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                            <TextField fx:id="txtSourceDir" promptText="选择包含图片的目录" editable="false"
+                                       HBox.hgrow="ALWAYS" styleClass="input-field"/>
+                            <Button fx:id="btnChooseDir" text="选择" onAction="#onChooseDir"
+                                    styleClass="secondary-button"/>
+                        </HBox>
+                        <Label text="输出目录" GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="form-label"/>
+                        <HBox spacing="10" alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                            <TextField fx:id="txtOutputDir" promptText="留空使用默认目录" editable="false"
+                                       HBox.hgrow="ALWAYS" styleClass="input-field"/>
+                            <Button fx:id="btnChooseOutputDir" text="选择" onAction="#onChooseOutputDir"
+                                    styleClass="secondary-button"/>
+                        </HBox>
+                    </GridPane>
+                </VBox>
+            </TitledPane>
+
+            <HBox styleClass="action-bar" spacing="14">
+                <Button fx:id="btnStart" text="开始处理" onAction="#onStart"
+                        styleClass="primary-button" prefWidth="140" prefHeight="40"/>
+                <ProgressBar fx:id="progressBar" prefWidth="300" progress="0" HBox.hgrow="ALWAYS"/>
+                <Label fx:id="lblStatus" text="" styleClass="status-label"/>
+            </HBox>
+
+            <TitledPane text="处理结果" collapsible="false" styleClass="card-pane">
+                <VBox styleClass="card-section">
+                    <TableView fx:id="resultTable" prefHeight="300">
+                        <columns>
+                            <TableColumn fx:id="colFileName" text="文件名" prefWidth="220"/>
+                            <TableColumn fx:id="colStatus" text="状态" prefWidth="90"/>
+                            <TableColumn fx:id="colResult" text="结果/输出" prefWidth="380"/>
+                        </columns>
+                    </TableView>
+                    <Label fx:id="lblSummary" text="" styleClass="summary-label"/>
+                </VBox>
+            </TitledPane>
+
+        </VBox>
+    </ScrollPane>
+</VBox>

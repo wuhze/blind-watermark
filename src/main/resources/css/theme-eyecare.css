@@ -1,0 +1,34 @@
+/*
+ * Blind Watermark Guard - 护眼主题 (淡绿色/草绿色)
+ * 覆盖 AtlantaFX CSS 变量，保持 PrimerLight 基底
+ */
+
+.root {
+    -color-bg-default: #f5fae8;
+    -color-bg-subtle: #e8f0d8;
+    -color-bg-inset: #dce8cc;
+    -color-fg-default: #2a3520;
+    -color-fg-muted: #5a6a4a;
+    -color-border-default: #b8cca8;
+    -color-border-muted: #c4d6b8;
+    -color-accent-emphasis: #2e7d32;
+    -color-accent-fg: #1b5e20;
+    -color-accent-subtle: #c8e6c9;
+    -color-neutral-subtle: #d8e8c8;
+    -color-neutral-muted: #b0c8a0;
+    -color-success-fg: #2e7d32;
+    -color-danger-fg: #c62828;
+    -color-warning-fg: #8d6e00;
+}
+
+.main-pane {
+    -fx-effect: dropshadow(gaussian, rgba(76, 175, 80, 0.15), 20, 0.05, 0, 4);
+}
+
+.status-link {
+    -fx-text-fill: #2e7d32;
+}
+
+.status-link:hover {
+    -fx-text-fill: #1b5e20;
+}

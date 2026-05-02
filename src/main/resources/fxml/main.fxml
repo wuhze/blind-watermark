@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.blindwatermark.controller.MainController"
+           fx:id="rootPane" styleClass="root-pane"
+           onMouseMoved="#onRootMouseMove" onMousePressed="#onRootMousePress" onMouseDragged="#onRootMouseDrag"
+           onMouseReleased="#onRootMouseRelease">
+    <children>
+        <BorderPane fx:id="mainPane" styleClass="main-pane">
+            <left>
+                <VBox fx:id="sidebarBox" styleClass="sidebar" prefWidth="180" minWidth="0" maxWidth="260">
+                    <HBox alignment="CENTER" spacing="10" styleClass="sidebar-logo">
+                        <padding><Insets top="18" right="12" bottom="18" left="12"/></padding>
+                        <StackPane fx:id="catLogoContainer" prefWidth="36" prefHeight="36" minWidth="36" minHeight="36"/>
+                        <Label fx:id="appTitleLabel" text="BlindWatermark" styleClass="logo-text"/>
+                    </HBox>
+
+                    <VBox fx:id="navMenuBox" styleClass="nav-menu" VBox.vgrow="ALWAYS">
+                        <padding><Insets top="8" right="12" bottom="8" left="12"/></padding>
+                        <Button fx:id="btnEmbed" text="嵌入水印" onAction="#onEmbedClick"
+                                styleClass="nav-button" maxWidth="1.7976931348623157E308" prefHeight="42"/>
+                        <Button fx:id="btnExtract" text="提取水印" onAction="#onExtractClick"
+                                styleClass="nav-button" maxWidth="1.7976931348623157E308" prefHeight="42"/>
+                        <Button fx:id="btnBatch" text="批量处理" onAction="#onBatchClick"
+                                styleClass="nav-button" maxWidth="1.7976931348623157E308" prefHeight="42"/>
+                        <Button fx:id="btnActivation" text="关于" onAction="#onActivationClick"
+                                styleClass="nav-button" maxWidth="1.7976931348623157E308" prefHeight="42"/>
+                    </VBox>
+
+                    <HBox alignment="CENTER" styleClass="sidebar-footer">
+                        <padding><Insets top="8" right="8" bottom="12" left="8"/></padding>
+                        <Label fx:id="versionLabel" text="v1.0.0" styleClass="sidebar-version"/>
+                    </HBox>
+                </VBox>
+            </left>
+
+            <center>
+                <VBox fx:id="contentBox">
+                    <HBox fx:id="topBar" styleClass="top-bar" alignment="CENTER_LEFT" spacing="0" prefHeight="38"
+                          onMousePressed="#onTopBarPress" onMouseDragged="#onTopBarDrag"
+                          onMouseClicked="#onTopBarDoubleClick" onMouseMoved="#onTopBarMove">
+                        <Label fx:id="holidayLabel" text="" styleClass="holiday-label" visible="false" managed="false"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <HBox alignment="CENTER" styleClass="theme-selector">
+                            <ComboBox fx:id="themeComboBox" prefWidth="80"/>
+                        </HBox>
+                        <Button fx:id="btnMinimize" styleClass="window-btn" onAction="#onMinimize"
+                                prefWidth="46" prefHeight="38" contentDisplay="GRAPHIC_ONLY">
+                            <graphic>
+                                <Region styleClass="icon-minimize"/>
+                            </graphic>
+                        </Button>
+                        <Button fx:id="btnMaximize" styleClass="window-btn" onAction="#onMaximize"
+                                prefWidth="46" prefHeight="38" contentDisplay="GRAPHIC_ONLY">
+                            <graphic>
+                                <Region fx:id="maximizeIcon" styleClass="icon-maximize"/>
+                            </graphic>
+                        </Button>
+                        <Button fx:id="btnClose" styleClass="window-btn window-btn-close" onAction="#onClose"
+                                prefWidth="46" prefHeight="38" contentDisplay="GRAPHIC_ONLY">
+                            <graphic>
+                                <Region styleClass="icon-close"/>
+                            </graphic>
+                        </Button>
+                    </HBox>
+
+                    <StackPane fx:id="contentArea" styleClass="content-area" VBox.vgrow="ALWAYS"/>
+
+                    <HBox styleClass="status-bar" prefHeight="26" spacing="4">
+                        <padding><Insets left="14" right="14"/></padding>
+                        <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS" spacing="0">
+                            <Label fx:id="copyrightLabel" text="Copyright © 2026 " styleClass="status-bar-text"/>
+                            <Hyperlink fx:id="linkCopyrightAuthor" text="玄陵" styleClass="status-link"
+                                       onAction="#onXuanlingClick"/>
+                            <Label fx:id="copyrightSuffixLabel" text=". All rights reserved." styleClass="status-bar-text"/>
+                        </HBox>
+                        <Label fx:id="statusLabel" text="检查中..." styleClass="status-bar-text"/>
+                    </HBox>
+                </VBox>
+            </center>
+        </BorderPane>
+    </children>
+</StackPane>

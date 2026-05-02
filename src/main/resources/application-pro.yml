@@ -1,0 +1,7 @@
+# Pro版本配置
+
+blind-watermark:
+  app-title: 隐藏
+  copyright-author: 玄陵
+  dev-mode: false
+  app-version: v0.0.5

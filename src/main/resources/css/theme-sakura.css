@@ -1,0 +1,50 @@
+/*
+ * Blind Watermark Guard - 汇崽主题 (樱花粉 + 天空蓝渐变)
+ * 覆盖 AtlantaFX CSS 变量，保持 PrimerLight 基底
+ */
+
+.root {
+    -color-bg-default: #fff5f8;
+    -color-bg-subtle: #ffe8ee;
+    -color-bg-inset: #ffdae4;
+    -color-fg-default: #3a2530;
+    -color-fg-muted: #8a6070;
+    -color-border-default: #f0b8c8;
+    -color-border-muted: #f4ccd6;
+    -color-accent-emphasis: #e91e63;
+    -color-accent-fg: #c2185b;
+    -color-accent-subtle: #fce4ec;
+    -color-neutral-subtle: #fce4ec;
+    -color-neutral-muted: #f0a0b8;
+    -color-success-fg: #4caf50;
+    -color-danger-fg: #e53935;
+    -color-warning-fg: #ff8f00;
+}
+
+.main-pane {
+    -fx-effect: dropshadow(gaussian, rgba(255, 182, 193, 0.3), 20, 0.05, 0, 4);
+}
+
+.sidebar {
+    -fx-background-color: linear-gradient(to bottom, #fff0f5, #e8f4fd);
+}
+
+.nav-button-active {
+    -fx-background-color: linear-gradient(to right, #FFD6E8, #D6ECFF) !important;
+}
+
+.nav-button-active:hover {
+    -fx-background-color: linear-gradient(to right, #FFD6E8, #D6ECFF) !important;
+}
+
+.status-link {
+    -fx-text-fill: #e91e63;
+}
+
+.status-link:hover {
+    -fx-text-fill: #c2185b;
+}
+
+.status-link:visited {
+    -fx-text-fill: #e91e63;
+}
